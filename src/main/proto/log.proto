@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package fun.dodo.tools.meta;
+
+option java_multiple_files = true;
+option java_generate_equals_and_hash = true;
+
+option java_package = "fun.dodo.tools.meta";
+option java_outer_classname = "LogProto";
+
+option csharp_namespace = "Dodo.tools.Meta.KnownTypes";
+
+option objc_class_prefix = "WKM";
+
+// 对象类型
+enum LogType {
+  LOG_TYPE_DEFAULT = 0;
+}
+
+// 定义
+message Log {
+  // ID
+  uint64 id = 1;
+  // 所有者：项目ID
+  uint64 owner_id = 2;
+  // 日志类型
+  LogType type = 3;
+
+  // 协议
+  string scheme = 4;
+  // 数据类型
+  string content_type = 5;
+  // 请求方法
+  string method = 6;
+  // 请求路径
+  string path = 7;
+  // 请求完整路径
+  string complete_path = 8;
+  // 请求客户端
+  string client = 9;
+  // 请求服务端
+  string server = 10;
+  // 请求headers
+  string headers = 11;
+  // 请求body
+  string body = 12;
+  // 请求Attributes
+  string attributes = 13;
+
+  // 创建时间: 用长整数表达
+  uint64 created_at = 21;
+
+}
+
+message LogList {
+  repeated Log log = 1;
+  // 行数
+  uint32 line_count = 2;
+  // 页数
+  uint32 page_count = 3;
+}

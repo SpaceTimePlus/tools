@@ -1,0 +1,22 @@
+#!/bin/bash
+
+rm -rf build
+rm -rf dist
+
+rm -rf    ./src/main/javascript
+mkdir -p  ./src/main/javascript
+cd        ./src/main/proto
+clear
+protoc --js_out=import_style=commonjs,binary:../javascript *.proto
+
+# git add ../javascript
+
+cd ../../../
+
+echo "---------- ProtoBuf Finished---------"
+echo ""
+
+gradle clean build
+
+echo "---------- Build finished---------"
+echo ""

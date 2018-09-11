@@ -1,0 +1,83 @@
+apply plugin: 'java'
+apply plugin: "idea"
+apply plugin: "com.google.protobuf"
+
+repositories {
+    jcenter()
+    mavenCentral()
+    mavenLocal()
+    maven { url 'http://maven.aliyun.com/mvn/repository/' }
+    maven { url "http://clojars.org/repo" }
+    maven { url "http://repo.spring.io/libs-release" }
+    maven { url "https://plugins.gradle.org/m2/" }
+    maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+}
+
+dependencies {
+
+    compile(
+            "io.vertx:vertx-core:$vertxVersion",
+            "io.vertx:vertx-web:$vertxVersion",
+
+            // Google
+            "com.google.code.gson:gson:$latestVersion",
+
+            // dagger
+            "com.google.dagger:dagger:$latestVersion",
+            "com.google.guava:guava:$latestVersion",
+
+            // ProtoBuf
+            "com.google.protobuf:protobuf-java:$latestVersion",
+            "com.google.protobuf:protobuf-java-util:$latestVersion",
+            "com.google.errorprone:error_prone_annotations:$latestVersion",
+            "com.googlecode.protobuf-java-format:protobuf-java-format:$latestVersion",
+
+            // 简单加密 - HashID - 生成数字的简单加密
+            "org.hashids:hashids:$latestVersion",
+
+            // 读取配置信息 - TOML
+            "com.moandjiezana.toml:toml4j:$latestVersion",
+
+            // 日志框架 - SLF4J
+            "org.slf4j:slf4j-api:$latestVersion",
+            "org.slf4j:slf4j-ext:$latestVersion",
+            "commons-logging:commons-logging:$latestVersion",
+
+            // 辅助框架 - servlet
+            "javax.servlet:javax.servlet-api:$latestVersion",
+    )
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile "io.vertx:vertx-unit:$latestVersion"
+
+}
+
+buildscript {
+
+    repositories {
+        jcenter()
+        mavenCentral()
+        mavenLocal()
+        maven { url 'http://maven.aliyun.com/mvn/repository/' }
+        maven { url "http://clojars.org/repo" }
+        maven { url "http://repo.spring.io/libs-release" }
+        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+    }
+
+    dependencies {
+        classpath "com.google.protobuf:protobuf-gradle-plugin:0.8.3"
+        classpath "net.ltgt.gradle:gradle-apt-plugin:0.13"
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:$latestVersion"
+    }
+}
+
+idea {
+    module {
+        sourceDirs += file("${projectDir}/build/generated/source/proto/main/java");
+    }
+}
