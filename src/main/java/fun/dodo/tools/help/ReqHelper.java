@@ -316,7 +316,7 @@ public final class ReqHelper {
     final HttpServerRequest request = context.request();
 
     System.out.println("");
-    System.out.println("==================================================== 日志开始 ===============================================");
+    System.out.println("================================================== 日志开始 =================================================");
 
     System.out.println("Scheme:      " + request.scheme());
 
