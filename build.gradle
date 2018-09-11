@@ -30,7 +30,7 @@ dependencies {
             "com.google.protobuf:protobuf-java:$latestVersion",
             "com.google.protobuf:protobuf-java-util:$latestVersion",
             "com.google.errorprone:error_prone_annotations:$latestVersion",
-            "com.googlecode.protobuf-java-format:protobuf-java-format:$latestVersion",
+            "com.googlecode.protobuf-java-format:protobuf-java-format:1.2",
 
             // 简单加密 - HashID - 生成数字的简单加密
             "org.hashids:hashids:$latestVersion",

@@ -12,8 +12,6 @@ option csharp_namespace = "Dodo.tools.Meta.KnownTypes";
 
 option objc_class_prefix = "WKM";
 
-import "common.proto";
-
 // 定义
 message Demo {
   // ID
@@ -21,7 +19,7 @@ message Demo {
   // 所有者ID
   uint64 owner_id = 2;
   // 类型
-  Type type = 3;
+  uint32 type = 3;
   // 名称
   string name = 4;
   // 说明

@@ -9,7 +9,6 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-var common_pb = require('./common_pb.js');
 goog.exportSymbol('proto.fun.dodo.tools.meta.Demo', null, global);
 goog.exportSymbol('proto.fun.dodo.tools.meta.DemoList', null, global);
 
@@ -111,7 +110,7 @@ proto.fun.dodo.tools.meta.Demo.deserializeBinaryFromReader = function(msg, reade
       msg.setOwnerId(value);
       break;
     case 3:
-      var value = /** @type {!proto.fun.dodo.tools.meta.Type} */ (reader.readEnum());
+      var value = /** @type {number} */ (reader.readUint32());
       msg.setType(value);
       break;
     case 4:
@@ -177,8 +176,8 @@ proto.fun.dodo.tools.meta.Demo.serializeBinaryToWriter = function(message, write
     );
   }
   f = message.getType();
-  if (f !== 0.0) {
-    writer.writeEnum(
+  if (f !== 0) {
+    writer.writeUint32(
       3,
       f
     );
@@ -252,15 +251,15 @@ proto.fun.dodo.tools.meta.Demo.prototype.setOwnerId = function(value) {
 
 
 /**
- * optional Type type = 3;
- * @return {!proto.fun.dodo.tools.meta.Type}
+ * optional uint32 type = 3;
+ * @return {number}
  */
 proto.fun.dodo.tools.meta.Demo.prototype.getType = function() {
-  return /** @type {!proto.fun.dodo.tools.meta.Type} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
-/** @param {!proto.fun.dodo.tools.meta.Type} value */
+/** @param {number} value */
 proto.fun.dodo.tools.meta.Demo.prototype.setType = function(value) {
   jspb.Message.setField(this, 3, value);
 };

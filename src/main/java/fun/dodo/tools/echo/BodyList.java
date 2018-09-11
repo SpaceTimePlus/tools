@@ -17,7 +17,6 @@ public final class BodyList implements Serializable {
 
 
     public BodyList() {
-
     }
 
 
@@ -40,6 +39,7 @@ public final class BodyList implements Serializable {
 
 
     public BodyList setData(final List data) {
+
         Optional<List> list = Optional.ofNullable(data);
         list.ifPresent(itemList -> itemList.forEach(item -> this.addData(item)));
 

@@ -14,7 +14,6 @@ public final class BodyOne implements Serializable {
 
 
     public BodyOne() {
-
     }
 
 
@@ -26,7 +25,6 @@ public final class BodyOne implements Serializable {
     public BodyOne setData(final Object data) {
 
         if(data instanceof Message){
-            System.out.print("data 参数属于 Message 类型");
             this.data = parseProtobufToJson((Message)data);
         }else{
             this.data = data;
