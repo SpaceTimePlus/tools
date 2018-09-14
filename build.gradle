@@ -38,6 +38,11 @@ dependencies {
             // 读取配置信息 - TOML
             "com.moandjiezana.toml:toml4j:$latestVersion",
 
+            // 数据库访问 - JDBI
+            "org.jdbi:jdbi:$latestVersion",
+            // 数据库访问 - MySQL
+            "mysql:mysql-connector-java:$latestVersion",
+
             // 日志框架 - SLF4J
             "org.slf4j:slf4j-api:$latestVersion",
             "org.slf4j:slf4j-ext:$latestVersion",
