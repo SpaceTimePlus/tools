@@ -697,4 +697,30 @@ public final class ResHelper {
         return jsonTaget;
     }
 
+    /***
+     * 数据分页
+     * @param context
+     * @param list
+     * @param pageSize
+     * @param pageIndex
+     */
+    public static void pageFun (final RoutingContext context, final List list, int pageSize, int pageIndex) {
+
+        final int lineCount = list.size();
+        final int pageCount = (lineCount <= pageSize) ? 1 : ((lineCount / pageSize) + 1);
+        if (pageIndex >= pageCount) {
+            pageIndex = pageCount - 1;
+        }
+
+        final int fromIndex = pageIndex * pageSize;
+        int intoIndex = fromIndex + pageSize;
+        if (intoIndex > lineCount) {
+            intoIndex = lineCount;
+        }
+        final int totalCount = lineCount;
+
+        // 提供给前端使用
+        echoList(context, list.subList(fromIndex, intoIndex), pageIndex, pageSize, totalCount);
+
+    }
 }
