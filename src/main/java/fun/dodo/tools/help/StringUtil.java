@@ -20,7 +20,7 @@ public class StringUtil {
 
         while (var2.hasNext()) {
             Map.Entry<String, String> entry = (Map.Entry) var2.next();
-            builder.append((String) entry.getKey()).append(": ").append((String) entry.getValue()).append(", ");
+            builder.append(entry.getKey()).append(": ").append(entry.getValue()).append(", ");
         }
 
         return builder.toString();
