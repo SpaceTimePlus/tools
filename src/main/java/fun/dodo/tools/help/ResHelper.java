@@ -107,11 +107,11 @@ public final class ResHelper {
      *
      * @param context: HTTP 路由上下文
      */
-    public static void echoList(final RoutingContext context, final List list, final int lineCount, final int pageCount, final int totalCount) {
+    public static void echoList(final RoutingContext context, final List list, final int index, final int size, final int count) {
         if (desiredJson(context)) {
-            echoListJson(context, list, totalCount);
+            echoListJson(context, list, count);
         } else {
-            echoListProto(context, list, lineCount, pageCount);
+            echoListProto(context, list, index, size, count);
         }
     }
 
@@ -122,12 +122,12 @@ public final class ResHelper {
      * @param context: HTTP 路由上下文
      * @param list:    对象清单
      */
-    private static void echoListJson(final RoutingContext context, final List<Message> list, final int totalCount) {
+    private static void echoListJson(final RoutingContext context, final List<Message> list, final int count) {
         final HttpServerResponse response = context.response();
 
         try {
             final EchoList echo = new EchoList();
-            echo.getHead().setItemCount(totalCount).setMessage("读取清单");
+            echo.getHead().setItemCount(count).setMessage("读取清单");
 
             // 添加到结果集
             list.forEach(demo -> echo.getBody().addData(demo));
@@ -148,14 +148,15 @@ public final class ResHelper {
      * @param context: HTTP 路由上下文
      * @param list:    对象清单
      */
-    private static void echoListProto(final RoutingContext context, final List<Message> list, final int lineCount, final int pageCount) {
+    private static void echoListProto(final RoutingContext context, final List<Message> list, final int index, final int size, final int count) {
         final HttpServerResponse response = context.response();
 
         try {
             final fun.dodo.tools.meta.EchoList.Builder builder = fun.dodo.tools.meta.EchoList.newBuilder();
 
             list.forEach(item -> builder.addObject(Any.pack(item)));
-            builder.setLineCount(lineCount).setPageCount(pageCount);
+
+            builder.setIndex(index).setSize(size).setCount(count);
 
             response.putHeader(CONTENT_TYPE, CONTENT_TYPE_STREAM)
                     .putHeader(CONTENT_CONTROL, CONTENT_CONTROL_VALUE)

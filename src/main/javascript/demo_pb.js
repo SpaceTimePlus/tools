@@ -396,7 +396,10 @@ proto.fun.dodo.tools.meta.DemoList.prototype.toObject = function(opt_includeInst
 proto.fun.dodo.tools.meta.DemoList.toObject = function(includeInstance, msg) {
   var f, obj = {
     demoList: jspb.Message.toObjectList(msg.getDemoList(),
-    proto.fun.dodo.tools.meta.Demo.toObject, includeInstance)
+    proto.fun.dodo.tools.meta.Demo.toObject, includeInstance),
+    count: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    index: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    size: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -438,6 +441,18 @@ proto.fun.dodo.tools.meta.DemoList.deserializeBinaryFromReader = function(msg, r
       reader.readMessage(value,proto.fun.dodo.tools.meta.Demo.deserializeBinaryFromReader);
       msg.addDemo(value);
       break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setCount(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setIndex(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setSize(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -474,6 +489,27 @@ proto.fun.dodo.tools.meta.DemoList.serializeBinaryToWriter = function(message, w
       proto.fun.dodo.tools.meta.Demo.serializeBinaryToWriter
     );
   }
+  f = message.getCount();
+  if (f !== 0) {
+    writer.writeUint32(
+      2,
+      f
+    );
+  }
+  f = message.getIndex();
+  if (f !== 0) {
+    writer.writeUint64(
+      3,
+      f
+    );
+  }
+  f = message.getSize();
+  if (f !== 0) {
+    writer.writeUint64(
+      4,
+      f
+    );
+  }
 };
 
 
@@ -507,6 +543,51 @@ proto.fun.dodo.tools.meta.DemoList.prototype.addDemo = function(opt_value, opt_i
 
 proto.fun.dodo.tools.meta.DemoList.prototype.clearDemoList = function() {
   this.setDemoList([]);
+};
+
+
+/**
+ * optional uint32 count = 2;
+ * @return {number}
+ */
+proto.fun.dodo.tools.meta.DemoList.prototype.getCount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/** @param {number} value */
+proto.fun.dodo.tools.meta.DemoList.prototype.setCount = function(value) {
+  jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * optional uint64 index = 3;
+ * @return {number}
+ */
+proto.fun.dodo.tools.meta.DemoList.prototype.getIndex = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {number} value */
+proto.fun.dodo.tools.meta.DemoList.prototype.setIndex = function(value) {
+  jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * optional uint64 size = 4;
+ * @return {number}
+ */
+proto.fun.dodo.tools.meta.DemoList.prototype.getSize = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/** @param {number} value */
+proto.fun.dodo.tools.meta.DemoList.prototype.setSize = function(value) {
+  jspb.Message.setField(this, 4, value);
 };
 
 

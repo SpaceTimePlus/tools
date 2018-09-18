@@ -66,8 +66,9 @@ proto.fun.dodo.tools.meta.EchoList.toObject = function(includeInstance, msg) {
   var f, obj = {
     objectList: jspb.Message.toObjectList(msg.getObjectList(),
     google_protobuf_any_pb.Any.toObject, includeInstance),
-    lineCount: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    pageCount: jspb.Message.getFieldWithDefault(msg, 3, 0)
+    count: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    index: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    size: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -111,11 +112,15 @@ proto.fun.dodo.tools.meta.EchoList.deserializeBinaryFromReader = function(msg, r
       break;
     case 2:
       var value = /** @type {number} */ (reader.readUint32());
-      msg.setLineCount(value);
+      msg.setCount(value);
       break;
     case 3:
       var value = /** @type {number} */ (reader.readUint32());
-      msg.setPageCount(value);
+      msg.setIndex(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setSize(value);
       break;
     default:
       reader.skipField();
@@ -153,17 +158,24 @@ proto.fun.dodo.tools.meta.EchoList.serializeBinaryToWriter = function(message, w
       google_protobuf_any_pb.Any.serializeBinaryToWriter
     );
   }
-  f = message.getLineCount();
+  f = message.getCount();
   if (f !== 0) {
     writer.writeUint32(
       2,
       f
     );
   }
-  f = message.getPageCount();
+  f = message.getIndex();
   if (f !== 0) {
     writer.writeUint32(
       3,
+      f
+    );
+  }
+  f = message.getSize();
+  if (f !== 0) {
+    writer.writeUint32(
+      4,
       f
     );
   }
@@ -204,32 +216,47 @@ proto.fun.dodo.tools.meta.EchoList.prototype.clearObjectList = function() {
 
 
 /**
- * optional uint32 line_count = 2;
+ * optional uint32 count = 2;
  * @return {number}
  */
-proto.fun.dodo.tools.meta.EchoList.prototype.getLineCount = function() {
+proto.fun.dodo.tools.meta.EchoList.prototype.getCount = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /** @param {number} value */
-proto.fun.dodo.tools.meta.EchoList.prototype.setLineCount = function(value) {
+proto.fun.dodo.tools.meta.EchoList.prototype.setCount = function(value) {
   jspb.Message.setField(this, 2, value);
 };
 
 
 /**
- * optional uint32 page_count = 3;
+ * optional uint32 index = 3;
  * @return {number}
  */
-proto.fun.dodo.tools.meta.EchoList.prototype.getPageCount = function() {
+proto.fun.dodo.tools.meta.EchoList.prototype.getIndex = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
 /** @param {number} value */
-proto.fun.dodo.tools.meta.EchoList.prototype.setPageCount = function(value) {
+proto.fun.dodo.tools.meta.EchoList.prototype.setIndex = function(value) {
   jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * optional uint32 size = 4;
+ * @return {number}
+ */
+proto.fun.dodo.tools.meta.EchoList.prototype.getSize = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/** @param {number} value */
+proto.fun.dodo.tools.meta.EchoList.prototype.setSize = function(value) {
+  jspb.Message.setField(this, 4, value);
 };
 
 
