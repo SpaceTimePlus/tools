@@ -194,7 +194,7 @@ public final class ResHelper {
             echo.getHead().setCode(1)
                     .setItemCount(1)
                     .setMessage(message);
-            echo.getBody().setData(null);
+            echo.getBody().setData(true);
 
             response.putHeader(CONTENT_TYPE, CONTENT_TYPE_JSON)
                     .putHeader(CONTENT_CONTROL, CONTENT_CONTROL_VALUE)

@@ -5,29 +5,28 @@ import java.util.Map;
 import java.util.Optional;
 
 public interface RedisService<I, K, T> {
+    String SERIAL_NUMBER_SUFFIX = "serial:number";
 
-    // 获取标识
     long id();
 
-    // 添加
     void add(final I id, final T obj);
 
-    // 添加Map
     void addMap(final I id, final Map<K, T> map);
 
-    // 添加List
     void addList(final I id, final List<T> map);
 
-    // 添加List
-    void addToList(final I id, final T obj);
+    void addObj(final I id, final T obj);
 
-    // 读取
+    void addZset(final I id, final T obj);
+
     Optional<T> get(final I id, final K key);
 
-    // 更新
+    Optional<List<byte[]>> getList(final Long id, long index, long size);
+
+    Optional<Long> getCount(final Long id);
+
     void update(final I id, final K key, final T obj);
 
-    // 删除
     void delete(final I id, final K key);
 
 }
