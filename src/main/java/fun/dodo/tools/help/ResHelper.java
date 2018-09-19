@@ -10,7 +10,6 @@ import com.googlecode.protobuf.format.JsonFormat;
 import fun.dodo.tools.Options;
 import fun.dodo.tools.echo.EchoList;
 import fun.dodo.tools.echo.EchoOne;
-import fun.dodo.tools.meta.Demo;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.HttpServerRequest;
 import io.vertx.core.http.HttpServerResponse;
@@ -18,7 +17,6 @@ import io.vertx.ext.web.RoutingContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.lang.reflect.Method;
 import java.text.DateFormat;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -153,7 +151,6 @@ public final class ResHelper {
 
         try {
             final fun.dodo.tools.meta.EchoList.Builder builder = fun.dodo.tools.meta.EchoList.newBuilder();
-
             list.forEach(item -> builder.addObject(Any.pack(item)));
 
             builder.setIndex(index).setSize(size).setCount(count);

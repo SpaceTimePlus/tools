@@ -16,7 +16,7 @@ cd ../../../
 echo "---------- ProtoBuf Finished---------"
 echo ""
 
-gradle clean build
+gradle clean build --stacktrace
 
 echo "---------- Build finished---------"
 echo ""
