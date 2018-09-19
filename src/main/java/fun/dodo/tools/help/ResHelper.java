@@ -10,6 +10,8 @@ import com.googlecode.protobuf.format.JsonFormat;
 import fun.dodo.tools.Options;
 import fun.dodo.tools.echo.EchoList;
 import fun.dodo.tools.echo.EchoOne;
+import fun.dodo.tools.meta.ResultType;
+import io.vertx.core.AsyncResult;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.HttpServerRequest;
 import io.vertx.core.http.HttpServerResponse;
@@ -721,4 +723,31 @@ public final class ResHelper {
         echoList(context, list.subList(fromIndex, intoIndex), pageIndex, pageSize, totalCount);
 
     }
+
+    /***
+     * 异步结果处理
+     * @param asyncResult
+     * @param context
+     */
+    public static void asyncResult (final AsyncResult asyncResult, final RoutingContext context, final int resultType) {
+
+        if (asyncResult.succeeded()) {
+
+            switch (resultType) {
+                case ResultType.DONE_VALUE:
+                    echoDoneMessage(context, SC_OK, asyncResult.result().toString());
+                    break;
+                case ResultType.ITEM_VALUE:
+                    echoItem(context, (Message) asyncResult.result());
+                    break;
+                case ResultType.LIST_VALUE:
+                    fun.dodo.tools.meta.EchoList echoList = (fun.dodo.tools.meta.EchoList)asyncResult.result();
+                    echoList(context, echoList.getObjectList(), echoList.getIndex(), echoList.getSize(), echoList.getCount());
+                    break;
+            }
+        } else {
+            echoFoundError(context, asyncResult.cause().getMessage());
+        }
+    }
+
 }

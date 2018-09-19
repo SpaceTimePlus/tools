@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package fun.dodo.tools.meta;
+
+option java_multiple_files = true;
+option java_generate_equals_and_hash = true;
+
+option java_package = "fun.dodo.tools.meta";
+option java_outer_classname = "resultTypeProto";
+
+option csharp_namespace = "Dodo.tools.Meta.KnownTypes";
+
+option objc_class_prefix = "WKM";
+
+// 返回类型
+enum ResultType {
+    DONE = 0;
+    ITEM = 1;
+    LIST = 2;
+}
