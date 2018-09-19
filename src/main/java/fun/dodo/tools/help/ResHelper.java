@@ -197,11 +197,11 @@ public final class ResHelper {
             echo.getHead().setCode(1)
                     .setItemCount(1)
                     .setMessage(message);
-            echo.getBody().setData(new ArrayList<String>());
+            echo.getBody().setData(null);
 
             response.putHeader(CONTENT_TYPE, CONTENT_TYPE_JSON)
                     .putHeader(CONTENT_CONTROL, CONTENT_CONTROL_VALUE)
-                    .setStatusCode(SC_OK)
+                    .setStatusCode(echoStatus)
                     .end(GSON.toJson(echo));
         } catch (final Exception e) {
             LOGGER.error("向前端反馈信息时出错, {}", Arrays.toString(e.getStackTrace()));
