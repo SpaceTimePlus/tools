@@ -29,11 +29,6 @@ public final class Options {
   // redis缓存时间
   private final long expire;
 
-  // base client
-  private final String baseClientType;
-  private final String baseClientHost;
-  private final long baseClientport;
-
   // 服务器端口和协议
   private final int serverPort;
   private final String serverType;
@@ -74,11 +69,6 @@ public final class Options {
 
     // redis缓存时长
     expire = tomlReader.getLong("redis.expire", 3600L).intValue();
-
-    // base client
-    baseClientType = tomlReader.getString("baseClient.type", "https");
-    baseClientHost = tomlReader.getString("baseClient.host", "");
-    baseClientport = tomlReader.getLong("baseClient.port", 80L);
 
     // MNS 参数
     mnsEndpoint = toml.getString("MNS.endpoint", "");
@@ -154,18 +144,6 @@ public final class Options {
 
   public long getExpire() {
     return expire;
-  }
-
-  public String getBaseClientType() {
-    return baseClientType;
-  }
-
-  public String getBaseClientHost() {
-    return baseClientHost;
-  }
-
-  public long getBaseClientport() {
-    return baseClientport;
   }
 
   public String getCorsHost() {

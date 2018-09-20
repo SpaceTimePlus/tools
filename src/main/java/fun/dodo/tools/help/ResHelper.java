@@ -11,11 +11,12 @@ import fun.dodo.tools.Options;
 import fun.dodo.tools.echo.EchoList;
 import fun.dodo.tools.echo.EchoOne;
 import fun.dodo.tools.meta.ResultType;
+
 import io.vertx.core.AsyncResult;
-import io.vertx.core.buffer.Buffer;
-import io.vertx.core.http.HttpServerRequest;
-import io.vertx.core.http.HttpServerResponse;
-import io.vertx.ext.web.RoutingContext;
+import io.vertx.reactivex.core.buffer.Buffer;
+import io.vertx.reactivex.core.http.HttpServerRequest;
+import io.vertx.reactivex.core.http.HttpServerResponse;
+import io.vertx.reactivex.ext.web.RoutingContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -95,7 +96,7 @@ public final class ResHelper {
             response.putHeader(CONTENT_TYPE, CONTENT_TYPE_STREAM)
                     .putHeader(CONTENT_CONTROL, CONTENT_CONTROL_VALUE)
                     .setStatusCode(SC_OK)
-                    .end(Buffer.buffer(Base64.getEncoder().encode(message.toByteArray())));
+                    .end(Buffer.buffer(Base64.getEncoder().encode(message.toByteArray()).toString()));
         } catch (final Exception e) {
             echoTransError(context, Arrays.toString(e.getStackTrace()));
         }
@@ -160,7 +161,7 @@ public final class ResHelper {
             response.putHeader(CONTENT_TYPE, CONTENT_TYPE_STREAM)
                     .putHeader(CONTENT_CONTROL, CONTENT_CONTROL_VALUE)
                     .setStatusCode(SC_OK)
-                    .end(Buffer.buffer(Base64.getEncoder().encode(builder.build().toByteArray())));
+                    .end(Buffer.buffer(Base64.getEncoder().encode(builder.build().toByteArray()).toString()));
         } catch (final Exception e) {
             echoTransError(context, Arrays.toString(e.getStackTrace()));
         }

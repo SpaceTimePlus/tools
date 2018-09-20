@@ -18,6 +18,8 @@ dependencies {
     compile(
             "io.vertx:vertx-core:$vertxVersion",
             "io.vertx:vertx-web:$vertxVersion",
+            "io.vertx:vertx-rx-java2:$vertxVersion",
+            "io.vertx:vertx-sync:$vertxVersion",
 
             // Google
             "com.google.code.gson:gson:$latestVersion",

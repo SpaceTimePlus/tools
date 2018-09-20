@@ -1,6 +1,6 @@
 package fun.dodo.tools.help;
 
-import io.vertx.core.MultiMap;
+import io.vertx.reactivex.core.MultiMap;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -16,7 +16,8 @@ public class StringUtil {
 
     public static String expressMultiMap(MultiMap multiMap) {
         StringBuilder builder = new StringBuilder();
-        Iterator var2 = multiMap.iterator();
+
+        Iterator var2 = multiMap.getDelegate().iterator();
 
         while (var2.hasNext()) {
             Map.Entry<String, String> entry = (Map.Entry) var2.next();

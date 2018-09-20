@@ -1,8 +1,8 @@
 package fun.dodo.tools.interfaces;
 
-import io.vertx.core.WorkerExecutor;
-import io.vertx.ext.web.Router;
-import io.vertx.ext.web.RoutingContext;
+import io.vertx.reactivex.core.WorkerExecutor;
+import io.vertx.reactivex.ext.web.Router;
+import io.vertx.reactivex.ext.web.RoutingContext;
 
 public interface BotBase {
 
