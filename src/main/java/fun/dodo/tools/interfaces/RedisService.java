@@ -1,4 +1,4 @@
-package fun.dodo.tools.help;
+package fun.dodo.tools.interfaces;
 
 import java.util.List;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package fun.dodo.tools.help;
+package fun.dodo.tools.interfaces;
 
 import io.vertx.core.WorkerExecutor;
 import io.vertx.ext.web.Router;
